@@ -19,8 +19,8 @@ public class UnitDAOImpl {
 		return em.find(Unit.class, id);
 	}
 
-	public void save(Unit unit) {
-		em.merge(unit);
+	public Unit save(Unit unit) {
+		return em.merge(unit);
 	}
 
 	public List<Unit> findAll() {

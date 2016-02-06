@@ -17,13 +17,11 @@ public class Unit {
 
 	@JsonIgnore
 	private String type;
-	
-	
 
 	public static Unit create(String name, String type) {
 		return new Unit(name, type);
 	}
-	
+
 	public Unit() {
 
 	}
@@ -56,6 +54,11 @@ public class Unit {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	@Override
+	public String toString() {
+		return "Unit [id=" + id + ", name=" + name + ", type=" + type + "]";
 	}
 
 }

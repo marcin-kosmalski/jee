@@ -12,16 +12,19 @@
 		<properties>
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			<property name="hibernate.generate_statistics" value="false" />
+			<property name="hibernate.show_sql" value="true" />
 
 			<!-- Hibernate should generate and export a clean schema on deployment -->
 			<property name="javax.persistence.schema-generation.database.action"
 				value="drop-and-create" />
 
 			<!-- Import test data with an SQL script -->
-<!-- 			<property name="hibernate.hbm2ddl.import_files_sql_extractor" -->
-<!-- 				value="org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor" /> -->
-<!-- 			<property name="javax.persistence.sql-load-script-source" -->
-<!-- 				value="TestData.sql.txt" /> -->
+			<!-- <property name="hibernate.hbm2ddl.import_files_sql_extractor" -->
+			<!-- value="org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor" 
+				/> -->
+			<!-- <property name="javax.persistence.sql-load-script-source" -->
+			<!-- value="TestData.sql.txt" /> -->
 
 			<property name="hibernate.format_sql" value="true" />
 
