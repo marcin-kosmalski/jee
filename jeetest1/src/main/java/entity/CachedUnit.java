@@ -1,14 +1,20 @@
 package entity;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import org.codehaus.jackson.annotate.JsonIgnore;
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 @Entity
-public class Unit {
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.TRANSACTIONAL)
+public class CachedUnit {
 
 	@Id
 	@GeneratedValue
@@ -19,16 +25,18 @@ public class Unit {
 	@JsonIgnore
 	private String type;
 
-
-	public static Unit create(String name, String type) {
-		return new Unit(name, type);
+	@ManyToOne(fetch=FetchType.LAZY)
+	private Owner owner;
+	
+	public static CachedUnit create(String name, String type) {
+		return new CachedUnit(name, type);
 	}
 
-	public Unit() {
+	public CachedUnit() {
 
 	}
 
-	public Unit(String name, String type) {
+	public CachedUnit(String name, String type) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -58,6 +66,14 @@ public class Unit {
 		this.id = id;
 	}
 
+	public Owner getOwner() {
+		return owner;
+	}
+
+	public void setOwner(Owner owner) {
+		this.owner = owner;
+	}
+	
 	
 
 	@Override

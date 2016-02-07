@@ -24,11 +24,23 @@ public class RestTest1 {
 	}
 
 	@Test
-	public void testPeristenceAndTransactionsForEjbSingleton() {
+	public void testPeristence() {
 
-		client.target(rest("singleton/1")).request().get();
-		client.target(rest("singleton/1")).request().get();
-		client.target(rest("singleton/2")).request().get();
+		client.target(rest("singleton/1")).request().get()
+				.readEntity(String.class);
+		client.target(rest("singleton/1")).request().get()
+				.readEntity(String.class);
+		client.target(rest("singleton/2")).request().get()
+				.readEntity(String.class);
+		client.target(rest("singleton/2")).request().get()
+				.readEntity(String.class);
+	}
+
+	@Test
+	public void testTransactionsForEjbSingleton() {
+
+		client.target(rest("singleton/3")).request().get()
+				.readEntity(String.class);
 
 	}
 
