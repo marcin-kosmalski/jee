@@ -1,15 +1,10 @@
 package test;
 
-import static org.junit.Assert.*;
-
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import javax.persistence.PersistenceUnit;
 
-import org.hibernate.SessionFactory;
-import org.hibernate.stat.SecondLevelCacheStatistics;
-import org.hibernate.stat.Statistics;
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.arquillian.junit.InSequence;
@@ -25,7 +20,6 @@ import org.junit.runner.RunWith;
 
 import entity.CachedUnit;
 import entity.Owner;
-import entity.Unit;
 
 @RunWith(Arquillian.class)
 public class TestQueryCache {

@@ -1,0 +1,50 @@
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+                            http://xmlns.jcp.org/xml/ns/persistence_2_1.xsd">
+
+	<persistence-unit name="MyPU">
+
+		<!-- This is the "built-in" JBoss AS datasource, with a temporary in-memory 
+			H2 database -->
+		<jta-data-source>java:jboss/datasources/ExampleDS</jta-data-source>
+
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+		<properties>
+
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+
+			<property name="hibernate.generate_statistics" value="false" />
+			<property name="hibernate.show_sql" value="true" />
+
+			<!-- <property name="hibernate.cache.region.factory_class" -->
+			<!-- value="org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory" 
+				/> -->
+			<!-- <property name="net.sf.ehcache.configurationResourceName" -->
+			<!-- value="/cache/ehcache.xml" /> -->
+			<!-- <property name="hibernate.cache.use_structured_entries" -->
+			<!-- value="false" /> -->
+
+
+			<!-- Hibernate should generate and export a clean schema on deployment -->
+			<property name="javax.persistence.schema-generation.database.action"
+				value="drop-and-create" />
+
+			<!-- Import test data with an SQL script -->
+			<!-- <property name="hibernate.hbm2ddl.import_files_sql_extractor" -->
+			<!-- value="org.hibernate.tool.hbm2ddl.MultipleLinesSqlCommandExtractor" 
+				/> -->
+			<!-- <property name="javax.persistence.sql-load-script-source" -->
+			<!-- value="TestData.sql.txt" /> -->
+
+			<property name="hibernate.format_sql" value="true" />
+
+			<!-- You typically want portable, predictable sorting for nulls in your 
+				app -->
+			<property name="hibernate.order_by.default_null_ordering"
+				value="first" />
+
+		</properties>
+
+	</persistence-unit>
+</persistence>
